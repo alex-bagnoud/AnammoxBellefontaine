@@ -502,9 +502,9 @@ plot(amx$DaysBelowWaterTable, amx$pHSoil)
 
 ![](Script_with_short_output_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
-```amx.glm11``` makes sense and suggests that anammox bacteria need both nitrate in the interstitial water (which is used as a susbtrate), and water-saturating condition, as these microorganisms seems to ....
+```amx.glm11``` makes sense and suggests that anammox bacteria need both nitrate in the interstitial water (which is used as a substrate), and water-saturating condition, as these microorganisms need anoxic conditions which are more marked where interstitial water is present.  
 
-The second model ```amx.glm16```, makes less sense, because it is not clear how pH can affect anammox bacteria. This variable appears to be an important factor because in the GLM, only Soils 2 to 4 are considered, due to the lack of ```avNO3Water``` observations in Soil 1. The consequence of this is that low pH soil samples, which correspond to the peat pog interstial water samples, are the ones that do not harbour anammox. But to us, the reason for the lack of anammox bacteria in Soil 4 is not the low pH, but the low concentration of inorganic N-form in the interstitial water. which are to water samples with low NH4+ and NO3- concentrations, due to the presence of the peatbog. In other words, low soil pH values reflects low NH4+ and NO3- concentrations due to sampling effect, which in turn explain why anammox bacteria are absent from Soil 4.
+The second model ```amx.glm16```, makes less sense, because it is not clear how pH can affect anammox bacteria. This variable appears to be an important factor because in the GLM, only Soils 2 to 4 are considered, due to the lack of ```avNO3Water``` observations in Soil 1. The consequence of this is that low pH soil samples, which correspond to the peatpog interstitial water samples, are the ones that do not harbor anammox. But to us, the reason for the lack of anammox bacteria in Soil 4 is not the low pH, but the low concentration of inorganic N-form in the interstitial water. which are to water samples with low NH4+ and NO3- concentrations, due to the presence of the peatbog. In other words, low soil pH values reflects low NH4+ and NO3- concentrations due to sampling effect, which in turn explain why anammox bacteria are absent from Soil 4.
 
 
 ```r
@@ -523,7 +523,7 @@ In other words, if we substitute ```pHSoil``` by ```avNH4Water```, we get a sign
 
 
 ```r
-# avNH4Water and avNO3Water:
+# AMXpresence with avNH4Water and avNO3Water:
 amx.glm24 <- bayesglm(AMXpresence~avNH4Water*avNO3Water,data=amx_s2to4,family=binomial)
 summary(amx.glm24)
 ```
@@ -556,7 +556,41 @@ summary(amx.glm24)
 ## Number of Fisher Scoring iterations: 41
 ```
 
-For all of these reasons, ```amx.glm11``` is considered as the best model explaining the distribution of anammox bacteria in this soil system and shows that they need both sufficient nitrate concentration in interstial water, and long-term water-saturating conditions.
+```r
+# AMXcopiesNb withavNH4Water and avNO3Water:
+amx.glm25 <- bayesglm(AMXcopiesNb~avNH4Water*avNO3Water,data=amx_s2to4,family=poisson)
+summary(amx.glm25)
+```
+
+```
+## 
+## Call:
+## bayesglm(formula = AMXcopiesNb ~ avNH4Water * avNO3Water, family = poisson, 
+##     data = amx_s2to4)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -3.2223  -2.8440  -1.8332  -0.3232   4.3654  
+## 
+## Coefficients:
+##                        Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)            1.320921   0.126409  10.450  < 2e-16 ***
+## avNH4Water             0.548107   0.074264   7.381 1.58e-13 ***
+## avNO3Water            -0.049814   0.020054  -2.484  0.01299 *  
+## avNH4Water:avNO3Water -0.022709   0.007074  -3.210  0.00133 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 351.92  on 31  degrees of freedom
+## Residual deviance: 258.45  on 28  degrees of freedom
+## AIC: Inf
+## 
+## Number of Fisher Scoring iterations: 7
+```
+
+For all of these reasons, ```amx.glm11``` is considered as the best model explaining the distribution of anammox bacteria in this soil system and shows that they need both sufficient nitrate concentration in interstitial water, and long-term water-saturating conditions.
 
 
 #### 11) Generalized linear mixed model (GLMM)

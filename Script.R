@@ -200,9 +200,13 @@ plot(amx$DaysBelowWaterTable, amx$pHSoil)
 plot(amx_s2to4$pHSoil, amx_s2to4$avNH4Water)
 plot(amx_s2to4$pHSoil, amx_s2to4$avNO3Water)
 
-# avNH4Water and avNO3Water:
+# AMXpresence with avNH4Water and avNO3Water:
 amx.glm24 <- bayesglm(AMXpresence~avNH4Water*avNO3Water,data=amx_s2to4,family=binomial)
 summary(amx.glm24)
+
+# AMXcopiesNb withavNH4Water and avNO3Water:
+amx.glm25 <- bayesglm(AMXcopiesNb~avNH4Water*avNO3Water,data=amx_s2to4,family=poisson)
+summary(amx.glm25)
 
 #### 11) Generalized linear mixed model (GLMM)
 
