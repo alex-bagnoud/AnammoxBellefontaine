@@ -1569,8 +1569,44 @@ plot(amx_s2to4$pHSoil, amx_s2to4$avNO3Water)
 
 ![](Script_with_complete_output_files/figure-html/unnamed-chunk-14-2.png)<!-- -->
 
-For all of these reasons, ```amx.glm11``` is considered as the best model explaining the distribution of anammox bacteria in this soil system and shows that they need both sufficient nitrate concentration in interstial water, and long-term water-saturating conditions.
+In other words, if we substitute ```pHSoil``` by ```avNH4Water```, we get a significant GLM for explaining ```AMXpresence```, even though AIC values are a bit higher:
 
+
+```r
+# avNH4Water and avNO3Water:
+amx.glm24 <- bayesglm(AMXpresence~avNH4Water*avNO3Water,data=amx_s2to4,family=binomial)
+summary(amx.glm24)
+```
+
+```
+## 
+## Call:
+## bayesglm(formula = AMXpresence ~ avNH4Water * avNO3Water, family = binomial, 
+##     data = amx_s2to4)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.41882  -0.31320  -0.06828   0.01211   1.40281  
+## 
+## Coefficients:
+##                       Estimate Std. Error z value Pr(>|z|)  
+## (Intercept)           -4.90089    1.93325  -2.535   0.0112 *
+## avNH4Water             9.16391    3.69213   2.482   0.0131 *
+## avNO3Water             0.02307    0.10958   0.211   0.8332  
+## avNH4Water:avNO3Water -0.51666    0.21569  -2.395   0.0166 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 39.750  on 31  degrees of freedom
+## Residual deviance: 14.728  on 28  degrees of freedom
+## AIC: 22.728
+## 
+## Number of Fisher Scoring iterations: 41
+```
+
+For all of these reasons, ```amx.glm11``` is considered as the best model explaining the distribution of anammox bacteria in this soil system and shows that they need both sufficient nitrate concentration in interstial water, and long-term water-saturating conditions.
 
 #### 11) Generalized linear mixed model (GLMM)
 
@@ -1609,14 +1645,14 @@ summary(amx.glmm1)
 ## 
 ## Fixed Effects:
 ##            Estimate Std. Error z value Pr(>|z|)    
-## avNO3Water  -0.2161     0.0626  -3.452 0.000556 ***
+## avNO3Water -0.23486    0.04855  -4.838 1.31e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## 
 ## Variance Components for Random Effects (P-values are one-tailed):
 ##      Estimate Std. Error z value Pr(>|z|)/2
-## Soil    11.63      11.14   1.044      0.148
+## Soil    43.27      37.08   1.167      0.122
 ```
 
 ```r
@@ -1638,15 +1674,15 @@ summary(amx.glmm2)
 ## Link is: "logit (log odds)"
 ## 
 ## Fixed Effects:
-##                     Estimate Std. Error z value Pr(>|z|)    
-## DaysBelowWaterTable 0.008620   0.001843   4.676 2.92e-06 ***
+##                     Estimate Std. Error z value Pr(>|z|)  
+## DaysBelowWaterTable 0.005396   0.002323   2.323   0.0202 *
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## 
 ## Variance Components for Random Effects (P-values are one-tailed):
 ##      Estimate Std. Error z value Pr(>|z|)/2  
-## Soil    18.50      13.48   1.373     0.0849 .
+## Soil    17.77      13.07    1.36     0.0869 .
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -1670,15 +1706,15 @@ summary(amx.glmm3)
 ## Link is: "logit (log odds)"
 ## 
 ## Fixed Effects:
-##                                 Estimate Std. Error z value Pr(>|z|)   
-## avNO3Water:DaysBelowWaterTable 0.0008844  0.0003266   2.708  0.00677 **
+##                                 Estimate Std. Error z value Pr(>|z|)    
+## avNO3Water:DaysBelowWaterTable 0.0023497  0.0002783   8.444   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## 
 ## Variance Components for Random Effects (P-values are one-tailed):
 ##      Estimate Std. Error z value Pr(>|z|)/2
-## Soil    11.99      12.18   0.984      0.162
+## Soil    31.77      27.99   1.135      0.128
 ```
 
 Here, we clearly see that the random effects are not significant. This means that GLM are good enough to explain anammox distribution in these soils and that GLMM are not needed.

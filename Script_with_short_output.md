@@ -519,6 +519,43 @@ plot(amx_s2to4$pHSoil, amx_s2to4$avNO3Water)
 
 ![](Script_with_short_output_files/figure-html/unnamed-chunk-14-2.png)<!-- -->
 
+In other words, if we substitute ```pHSoil``` by ```avNH4Water```, we get a significant GLM for explaining ```AMXpresence```, even though AIC values are a bit higher:
+
+
+```r
+# avNH4Water and avNO3Water:
+amx.glm24 <- bayesglm(AMXpresence~avNH4Water*avNO3Water,data=amx_s2to4,family=binomial)
+summary(amx.glm24)
+```
+
+```
+## 
+## Call:
+## bayesglm(formula = AMXpresence ~ avNH4Water * avNO3Water, family = binomial, 
+##     data = amx_s2to4)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.41882  -0.31320  -0.06828   0.01211   1.40281  
+## 
+## Coefficients:
+##                       Estimate Std. Error z value Pr(>|z|)  
+## (Intercept)           -4.90089    1.93325  -2.535   0.0112 *
+## avNH4Water             9.16391    3.69213   2.482   0.0131 *
+## avNO3Water             0.02307    0.10958   0.211   0.8332  
+## avNH4Water:avNO3Water -0.51666    0.21569  -2.395   0.0166 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 39.750  on 31  degrees of freedom
+## Residual deviance: 14.728  on 28  degrees of freedom
+## AIC: 22.728
+## 
+## Number of Fisher Scoring iterations: 41
+```
+
 For all of these reasons, ```amx.glm11``` is considered as the best model explaining the distribution of anammox bacteria in this soil system and shows that they need both sufficient nitrate concentration in interstial water, and long-term water-saturating conditions.
 
 
@@ -541,7 +578,6 @@ amx.glmm2 <- glmm(AMXpresence ~ 0 + DaysBelowWaterTable,
                  random = list(AMXpresence ~ 0 + Soil), data=amx, family.glmm=binomial.glmm,
                  varcomps.names = c("Soil"), m = 10^5)
 summary(amx.glmm2)
-
 
 # DaysBelowWaterTable and avNO3Water:
 amx.glmm3 <- glmm(AMXpresence ~ 0 + avNO3Water:DaysBelowWaterTable,
