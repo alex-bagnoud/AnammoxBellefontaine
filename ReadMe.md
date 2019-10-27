@@ -4,7 +4,7 @@ This github repository details the statistical analyses carried out in the paper
 
 This work describes the distribution, diversity and activy of anammox along a sharp soil gradient, from an amended pasteure to an ombrotrophic peatbog. The aim of the statistical analysis presented here is to understand which environmental parameters are controlling anammox distribution in this soil system.
 
-Note: the phylogenetic analyses of this article is presented in another [repository](https://github.com/alex-bagnoud/anammox-soil-tree).
+Note: the phylogenetic analyses of this article are presented in another [repository](https://github.com/alex-bagnoud/anammox-soil-tree).
 
 #### Files:
 This repository inlcude the following files:
