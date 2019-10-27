@@ -39,6 +39,6 @@ Here is the exhaustive list of all the variables in [amx_matrix.csv](amx_matrix.
 * ```avSIIWater```: Average concentration of S(-II) in interstitial water samples during an annual cycle. Some values were interpolated by linear combination in order to match the depth of other variables. Not measured in Soil 1. Unit : umol l<sup>-1</sup>.
 * ```avSO4water```: Average concentration of SO<sub>4</sub><sup>2-</sup> in interstitial water samples during an annual cycle. Some values were interpolated by linear combination in order to match the depth of other variables. Not measured in Soil 1. Unit : umol l<sup>-1</sup>.
 * ```NitrifRate```: Nitrification rates measured in vitro for few samples per soil type. Unit : umol NH<sub>4</sub><sup>+</sup> g<sup>-1</sup> dry soil h<sup>-1</sup>.
-* ```BOD```: Biological oxygen demand, measured during 5 days for samples from Soil 3 only. Unit : mg OO<sub>2</sub> g<sup>-1</sup> dry soil.
+* ```BOD```: Biological oxygen demand, measured during 5 days for samples from Soil 3 only. Unit : mg O<sub>2</sub> g<sup>-1</sup> dry soil.
 
 Note: Concentration of NO<sub>2</sub><sup>-</sup> extracted from soil samples was not included in the data set, as this value is null for all observations.
