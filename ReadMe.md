@@ -1,6 +1,6 @@
 # Anammox distribution in Bellefontaine
 
-This github repository details the statistical analyses carried out in the paper **Environmental factors determining distribution and activity of anammox bacteria in minerotrophic fen soils** written by Alexandre Bagnoud, Sylvia Guye-Humbert, Brigitte Schloter-Hai, Michael Schloter and Jakob Zopfi and published in *Insert journal name here + link*.
+This github repository details the statistical analyses carried out in the paper **Environmental factors determining distribution and activity of anammox bacteria in minerotrophic fen soils** written by Alexandre Bagnoud, Sylvia Guye-Humbert, Brigitte Schloter-Hai, Michael Schloter and Jakob Zopfi and published in FEMS Microbiology Ecology, Volume 96, Issue 2 in February 2020 ([https://doi.org/10.1093/femsec/fiz191](https://doi.org/10.1093/femsec/fiz191)).
 
 This work describes the distribution, diversity and activity of anammox along a sharp soil gradient, from an amended pasteure to an ombrotrophic peatbog. The aim of the statistical analysis presented here is to understand which environmental parameters are controlling anammox distribution in this soil system.
 
